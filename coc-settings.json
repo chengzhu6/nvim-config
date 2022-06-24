@@ -1,5 +1,12 @@
 {
   "go.goplsOptions": {
     "completeUnimported": true
+  },
+  "languageserver": {
+	"groovy": {
+	    "command": "java",
+	    "args" : ["-jar", "/Users/qinghua.liu/.config/nvim/jtl/groovy-language-server-all.jar"],
+	    "filetypes": ["groovy"]
+	  }
   }
 }

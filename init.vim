@@ -4,6 +4,7 @@ set undodir=~/.vim/undodir
 set directory^=~/.vim/tmp//
 set updatetime=300
 set timeoutlen=500
+set number
 
 " easymotion config
 map <Space> <Plug>(easymotion-prefix)
@@ -30,6 +31,10 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug '907th/vim-auto-save'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
+
+"fzf config
+nnoremap <F3> :FZF<CR>
+"
 
 " go config
 autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
