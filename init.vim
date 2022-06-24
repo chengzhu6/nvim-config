@@ -53,8 +53,20 @@ function! s:build_go_files()
     call go#cmd#Build(0)
   endif
 endfunction
-
 autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
+
+" run :GoRun or :GoTest based on the go file
+function! s:run_go_file()
+  let l:file = expand('%')
+  if l:file =~# '^\f\+_test\.go$'
+    call go#cmd#Test(0, 1)
+  elseif l:file =~# '^\f\+\.go$'
+    call go#cmd#Run(0)
+  endif
+endfunction
+autocmd FileType go nmap <leader>r :<C-u>call <SID>run_go_file()<CR>
+
+" end go config
 
 " coc config
 "
