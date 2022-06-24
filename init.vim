@@ -30,6 +30,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug '907th/vim-auto-save'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 call plug#end()
 
 "fzf config
