@@ -5,6 +5,8 @@ set directory^=~/.vim/tmp//
 set updatetime=300
 set timeoutlen=500
 set number
+" set auto split vertical
+autocmd WinNew * wincmd L
 
 " easymotion config
 map <Space> <Plug>(easymotion-prefix)
@@ -40,6 +42,11 @@ nnoremap <F3> :FZF<CR>
 " go config
 autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
 autocmd FileType go set tabstop=4
+"" highlight config
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
 " jump between errors in quickfix list:
 map <C-n> :cnext<CR>
 map <C-m> :cprevious<CR>
@@ -54,17 +61,6 @@ function! s:build_go_files()
   endif
 endfunction
 autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
-
-" run :GoRun or :GoTest based on the go file
-function! s:run_go_file()
-  let l:file = expand('%')
-  if l:file =~# '^\f\+_test\.go$'
-    call go#cmd#Test(0, 1)
-  elseif l:file =~# '^\f\+\.go$'
-    call go#cmd#Run(0)
-  endif
-endfunction
-autocmd FileType go nmap <leader>r :<C-u>call <SID>run_go_file()<CR>
 
 " end go config
 
