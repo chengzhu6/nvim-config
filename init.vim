@@ -14,7 +14,9 @@ map <Space> <Plug>(easymotion-prefix)
 " nerdtree config
 autocmd VimEnter * NERDTree | wincmd p
 autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
-nnoremap <F1> :NERDTree<CR>
+nnoremap <F1> :NERDTreeToggle<CR>
+" Exit Vim if NERDTree is the only window remaining in the only tab.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 " Open the existing NERDTree on each new tab.
 autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
 
@@ -33,10 +35,13 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug '907th/vim-auto-save'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'wookayin/fzf-ripgrep.vim'
+Plug 'wookayin/fzf.vim'
 call plug#end()
 
 "fzf config
 nnoremap <F3> :FZF<CR>
+nnoremap <F4> :Rg<CR>
 "
 
 " go config
